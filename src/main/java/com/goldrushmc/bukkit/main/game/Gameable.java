@@ -1,6 +1,7 @@
 package com.goldrushmc.bukkit.main.game;
 
 import com.goldrushmc.bukkit.main.Informable;
+import com.google.common.base.Stopwatch;
 import org.bukkit.scoreboard.Scoreboard;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 /**
  * The Gameable interface represents any mini-game
  */
-public interface Gameable extends Informable{
+public interface Gameable extends Informable {
 
     /**
      * The list of rules to be followed.
@@ -41,6 +42,16 @@ public interface Gameable extends Informable{
     void restartGame();
 
     /**
+     * Starts the game, and any timer that may be attached.
+     */
+    void startGame();
+
+    /**
+     * Ends the game, and any timer that may be attached.
+     */
+    void endGame();
+
+    /**
      * Will only reset the game to the last save-point
      */
     void restartFromLastSave();
@@ -50,4 +61,23 @@ public interface Gameable extends Informable{
      * @return {@code true} if success, {@code false} if it fails.
      */
     boolean saveGame();
+
+    /**
+     * Determines whether or not to allow the environment to update at any time.
+     * @return {@code true} if it is allowed, {@code false} if not.
+     */
+    boolean allowEnvironmentUpdates();
+
+    /**
+     * Determines whether or not this game has a time limit set.
+     * @return {@code true} if there is a time limit, {@code false} if not.
+     */
+    boolean hasTimeLimit();
+
+    /**
+     * Gets the {@link Stopwatch} instance associated with this game
+     * @return the {@link Stopwatch} instance, or null if there is no time limit.
+     */
+    Stopwatch getTimer();
+
 }
