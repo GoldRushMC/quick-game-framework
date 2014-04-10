@@ -7,7 +7,7 @@ import com.goldrushmc.bukkit.main.Informable;
  * within the games.
  *
  */
-public interface Actionable extends Informable{
+public interface Actionable extends Informable {
 
     /**
      * Invokes the action tied to the instance.
@@ -18,7 +18,7 @@ public interface Actionable extends Informable{
      * Checks to see if the action is enabled or not.
      * @return {@code true} if enabled, {@code false} if not
      */
-    boolean isEisabled();
+    boolean isEnabled();
 
     /**
      * Turns the action's state to either Enabled or Disabled.
