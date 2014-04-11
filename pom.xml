@@ -53,7 +53,7 @@
     <properties>
         <jdk>1.7</jdk>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <main.class>com.goldrushmc.bukkit.main.Main</main.class>
+        <main.class>com.goldrushmc.Main</main.class>
     </properties>
 
     <build>

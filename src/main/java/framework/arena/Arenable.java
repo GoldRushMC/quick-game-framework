@@ -1,18 +1,18 @@
-package com.goldrushmc.bukkit.main.arena;
+package framework.arena;
 
-import com.goldrushmc.bukkit.main.Informable;
-import com.goldrushmc.bukkit.main.game.Gameable;
-import org.bukkit.Location;
+import framework.general.Informable;
+import framework.game.Gameable;
+import framework.save.Saveable;
 
 import java.util.List;
 
 /**
  * The Arenable interface represents an arena that can host games
  */
-public interface Arenable extends Informable{
+public interface Arenable extends Saveable {
 
     /**
-     * Gets the types of {@link com.goldrushmc.bukkit.main.game.Gameable}s supported by this arena.
+     * Gets the types of {@link framework.game.Gameable}s supported by this arena.
      * @return A list of strings that represent the names of supported game types.
      */
     List<String> getSupportedGameTypes();

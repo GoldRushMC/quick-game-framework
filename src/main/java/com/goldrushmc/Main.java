@@ -1,4 +1,4 @@
-package com.goldrushmc.bukkit.main;
+package com.goldrushmc;
 
 import org.bukkit.plugin.java.JavaPlugin;
 

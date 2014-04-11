@@ -1,7 +1,6 @@
-package com.goldrushmc.bukkit.main.game;
+package framework.game;
 
-import com.goldrushmc.bukkit.main.Informable;
-import org.bukkit.scoreboard.Objective;
+import framework.general.Informable;
 
 import java.util.List;
 
@@ -9,7 +8,7 @@ import java.util.List;
  * Ruleable is the contract for how the rules with games are expected to behave.
  *
  */
-public interface Ruleable extends Informable{
+public interface Ruleable extends Informable {
     /**
      * Gets the list of {@link Actionable}s that are caused by this rule
      *

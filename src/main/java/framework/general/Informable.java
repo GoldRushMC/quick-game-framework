@@ -1,4 +1,4 @@
-package com.goldrushmc.bukkit.main;
+package framework.general;
 
 /**
  * Interface that is used to enable an object to describe itself to the outside world.

@@ -1,5 +1,6 @@
-package com.goldrushmc.bukkit.main.game;
+package framework.game;
 
+import framework.save.Saveable;
 import org.bukkit.entity.Player;
 
 import java.io.Serializable;
@@ -8,7 +9,7 @@ import java.util.Map;
 /**
  * The interface for participants of games.
  */
-public interface Participatable extends Serializable{
+public interface Participatable extends Saveable {
 
     /**
      * Gets the reference held to the actual Bukkit {@link Player} object.

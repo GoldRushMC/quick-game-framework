@@ -1,4 +1,4 @@
-package com.goldrushmc.bukkit.main.arena;
+package framework.arena;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -18,7 +18,7 @@ public interface Blueprintable {
      * to those relative locations
      * @return The {@link Map} of {@link Vector}s to {@link Material}s
      */
-    Map<Vector, Material> getRawLayout();
+    Map<Vector, Material> getRelativeLayout();
 
     /**
      * Gets the area that this blueprint has been applied

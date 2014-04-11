@@ -1,12 +1,13 @@
-package com.goldrushmc.bukkit.main.arena;
+package framework.arena;
 
-import com.goldrushmc.bukkit.main.Informable;
+import framework.general.Informable;
+import framework.save.Saveable;
 import org.bukkit.block.Biome;
 
 /**
  * The Environmentable interface represents a particular environment that can be used by Arenas
  */
-public interface Environmentable extends Informable{
+public interface Environmentable extends Saveable {
 
     /**
      * Gets the type of environment this is

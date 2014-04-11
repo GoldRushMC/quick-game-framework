@@ -1,6 +1,6 @@
-package com.goldrushmc.bukkit.main.game;
+package framework.game;
 
-import com.goldrushmc.bukkit.main.Informable;
+import framework.general.Informable;
 
 /**
  * The Actionable interface defines behavior behind how actions are to be performed

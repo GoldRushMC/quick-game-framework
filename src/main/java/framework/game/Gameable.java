@@ -1,15 +1,17 @@
-package com.goldrushmc.bukkit.main.game;
+package framework.game;
 
-import com.goldrushmc.bukkit.main.Informable;
+import framework.general.Informable;
 import com.google.common.base.Stopwatch;
+import framework.save.Saveable;
 import org.bukkit.scoreboard.Scoreboard;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * The Gameable interface represents any mini-game
  */
-public interface Gameable extends Informable {
+public interface Gameable extends Saveable {
 
     /**
      * The list of rules to be followed.
@@ -50,17 +52,6 @@ public interface Gameable extends Informable {
      * Ends the game, and any timer that may be attached.
      */
     void endGame();
-
-    /**
-     * Will only reset the game to the last save-point
-     */
-    void restartFromLastSave();
-
-    /**
-     * Saves the current progress of the game
-     * @return {@code true} if success, {@code false} if it fails.
-     */
-    boolean saveGame();
 
     /**
      * Determines whether or not to allow the environment to update at any time.

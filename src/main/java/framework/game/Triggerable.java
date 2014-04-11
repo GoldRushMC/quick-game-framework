@@ -1,8 +1,7 @@
-package com.goldrushmc.bukkit.main.game;
+package framework.game;
 
-import com.goldrushmc.bukkit.main.Informable;
+import framework.general.Informable;
 import org.bukkit.event.Event;
-import org.bukkit.event.Listener;
 
 /**
  * Conditionables are event-handlers for the {@link Ruleable}s.
@@ -22,12 +21,6 @@ public interface Triggerable<T extends Event> extends Informable{
      * @return the description, as a {@link String}
      */
     String getConditionDescription();
-
-    /**
-     * A trigger goes from a {@code false} state to {@code true} if it's condition is met.
-     * This method must call the {@link Ruleable} interface to determine what to do next.
-     */
-    void onTrigger();
 
     /**
      * Gets the rule this trigger is associated to.

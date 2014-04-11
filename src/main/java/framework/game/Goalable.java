@@ -1,4 +1,4 @@
-package com.goldrushmc.bukkit.main.game;
+package framework.game;
 
 import org.bukkit.scoreboard.Objective;
 
