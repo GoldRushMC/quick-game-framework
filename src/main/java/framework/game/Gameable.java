@@ -1,5 +1,6 @@
 package framework.game;
 
+import framework.general.Enums;
 import framework.general.Informable;
 import com.google.common.base.Stopwatch;
 import framework.save.Saveable;
@@ -37,6 +38,13 @@ public interface Gameable extends Saveable {
      * @return The {@link Scoreboard}
      */
     Scoreboard getScoreboard();
+
+    /**
+     * Gets the {@link framework.general.Enums.GameStatus} of the game.
+     * This will return null if the game has not been initiated.
+     * @return the {@link framework.general.Enums.GameStatus}
+     */
+    Enums.GameStatus getStatus();
 
     /**
      * Called at anytime, hard resets the game. Any goal progress will be lost.
