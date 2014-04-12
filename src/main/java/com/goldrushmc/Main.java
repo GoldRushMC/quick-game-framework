@@ -13,6 +13,7 @@ public class Main extends JavaPlugin {
     public void onEnable(){
         instance = this;
 
+
     }
 
     public void onDisable(){

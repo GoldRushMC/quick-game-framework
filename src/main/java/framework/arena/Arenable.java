@@ -1,6 +1,5 @@
 package framework.arena;
 
-import framework.general.Informable;
 import framework.game.Gameable;
 import framework.save.Saveable;
 

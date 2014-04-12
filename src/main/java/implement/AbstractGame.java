@@ -8,6 +8,7 @@ import framework.game.Ruleable;
 import inspire.Datum;
 import org.bukkit.scoreboard.Scoreboard;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -39,7 +40,7 @@ public abstract class AbstractGame implements Gameable {
     }
 
     @Override
-    public List<Datum> getData() {
+    public List<Datum<?>> getData() {
         if(data == null) capturePresentState();
         return data;
     }

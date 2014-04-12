@@ -1,7 +1,8 @@
 package framework.voting;
 
-import framework.general.Informable;
 import com.google.common.base.Stopwatch;
+import framework.general.Informable;
+
 import java.util.List;
 import java.util.Map;
 

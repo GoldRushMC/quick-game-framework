@@ -3,7 +3,6 @@ package framework.game;
 import framework.save.Saveable;
 import org.bukkit.entity.Player;
 
-import java.io.Serializable;
 import java.util.Map;
 
 /**

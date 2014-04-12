@@ -1,6 +1,5 @@
 package framework.arena;
 
-import framework.general.Informable;
 import framework.save.Saveable;
 import org.bukkit.block.Biome;
 
