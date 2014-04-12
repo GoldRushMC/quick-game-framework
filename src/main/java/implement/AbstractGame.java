@@ -12,17 +12,16 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
- * User: InspiredIdealist
- * Date: 4/10/2014
+ * The base implementation of the Gameable interface.
  */
 public abstract class AbstractGame implements Gameable {
 
-    List<Ruleable> rules;
-    List<Goalable> goals;
-    List<Participatable> participants;
+    List<Ruleable> rules = new ArrayList<Ruleable>();
+    List<Goalable> goals = new ArrayList<Goalable>();
+    List<Participatable> participants = new ArrayList<Participatable>();
     Scoreboard scoreboard;
     Stopwatch stopwatch;
-    List<Datum<?>> data;
+    List<Datum<?>> data = new ArrayList<Datum<?>>();
 
     @Override
     public void capturePresentState() {
@@ -41,7 +40,8 @@ public abstract class AbstractGame implements Gameable {
 
     @Override
     public List<Datum> getData() {
-        return null;
+        if(data == null) capturePresentState();
+        return data;
     }
 
     @Override
