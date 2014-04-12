@@ -17,38 +17,39 @@ import java.util.List;
  */
 public class GameManager implements Managable{
 
-    List<Gameable> games = new ArrayList<Gameable>();
+    List<Arenable> arenas = new ArrayList<Arenable>();
 
 
     @Override
     public List<Arenable> getArenas() {
-        List<Arenable> arenas = new ArrayList<Arenable>();
-        for(Gameable game : games){
-            //arenas.add(game.) TODO: I'm pretty sure that games would have an arena would they not?
-        }
-        return null;
+        return arenas;
     }
 
     @Override
     public List<Gameable> getCurrentGames() {
         List<Gameable> currentGames = new ArrayList<Gameable>();
-        for(Gameable game : games){
-            if(game.getStatus().equals(Enums.GameStatus.STARTED))
-                currentGames.add(game);
+        for(Arenable arena : arenas){
+            if(arena.getCurrentGame().getStatus().equals(Enums.GameStatus.STARTED))
+                currentGames.add(arena.getCurrentGame());
         }
         return currentGames;
     }
 
     @Override
-    public List<Gameable> getFullGameList() {
-        return games;
+    public List<Gameable> getFullGameList()
+    {
+        List<Gameable> currentGames = new ArrayList<Gameable>();
+        for(Arenable arena : arenas){
+                currentGames.add(arena.getCurrentGame());
+        }
+        return currentGames;
     }
 
     @Override
     public List<Participatable> getAllActiveParticipants() {
         List<Participatable> participants = new ArrayList<Participatable>();
-        for(Gameable game : games){
-            participants.addAll(game.getParticipants());
+        for(Arenable arena : arenas){
+            participants.addAll(arena.getCurrentGame().getParticipants());
         }
         return participants;
     }
@@ -61,8 +62,8 @@ public class GameManager implements Managable{
     @Override
     public List<Scoreboard> getScoreboards() {
         List<Scoreboard> scoreboards = new ArrayList<Scoreboard>();
-        for(Gameable game : games){
-            scoreboards.add(game.getScoreboard());
+        for(Arenable arena : arenas){
+            scoreboards.add(arena.getCurrentGame().getScoreboard());
         }
         return scoreboards;
     }
