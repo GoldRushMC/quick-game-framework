@@ -27,7 +27,7 @@ public interface Saveable extends Informable{
      * Gets the current in-cache data that was grabbed during the last {@link Saveable}.capturePresentState().
      * @return A {@link List} of {@link Datum}s which contain a pair of String and Mystery Value
      */
-    public List<Datum> getData();
+    public List<Datum<?>> getData();
 
     /**
      * Loads the save with the specified save name.

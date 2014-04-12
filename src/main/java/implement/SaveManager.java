@@ -1,7 +1,8 @@
 package implement;
 
-import java.sql.*;
+import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.Statement;
 
 /**
  * Created by Lex on 11/04/2014.

@@ -17,12 +17,6 @@ public interface Triggerable<T extends Event> extends Informable{
     boolean matchCondition(T t);
 
     /**
-     * A description of the condition needed to perform the onTrigger() method.
-     * @return the description, as a {@link String}
-     */
-    String getConditionDescription();
-
-    /**
      * Gets the rule this trigger is associated to.
      * @return The {@link Ruleable} implementation
      */
