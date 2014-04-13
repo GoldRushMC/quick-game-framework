@@ -1,6 +1,7 @@
 package framework.game;
 
 import framework.save.Saveable;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 import java.util.Map;
@@ -14,7 +15,7 @@ public interface Participatable extends Saveable {
      * Gets the reference held to the actual Bukkit {@link Player} object.
      * @return The {@link Player} object
      */
-    Player getPlayerLink();
+    OfflinePlayer getPlayerLink();
 
     /**
      * Convenience Method.

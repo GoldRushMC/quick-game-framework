@@ -3,7 +3,7 @@ package framework.general;
 /**
  * Created by Lex on 11/04/2014.
  */
-public class Enums {
+public final class Enums {
 
     public enum GameStatus {
         STOPPED(0), STARTED(1), RESTARTING(2);

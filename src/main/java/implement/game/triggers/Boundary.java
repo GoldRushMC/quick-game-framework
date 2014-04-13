@@ -1,22 +1,18 @@
-package implement.triggers;
+package implement.game.triggers;
 
 import framework.arena.Blueprintable;
 import framework.game.Ruleable;
-import framework.game.Triggerable;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 /**
- * User: InspiredIdealist
- * Date: 4/11/2014
+ * A Trigger that notifies its {@link Ruleable} when any player crosses its boundary.
  */
-public class Boundary implements Triggerable<PlayerMoveEvent> {
+public class Boundary extends AbstractTrigger<PlayerMoveEvent> {
 
     Blueprintable bounds;
-    Ruleable rule;
-    boolean isEnabled = true;
 
     public Boundary(Ruleable rule, Blueprintable bounds) {
-        this.rule = rule;
+        super("Boundary", "Indicates when a player has gone out of bounds.", rule);
         this.bounds = bounds;
     }
 
@@ -37,15 +33,5 @@ public class Boundary implements Triggerable<PlayerMoveEvent> {
     @Override
     public void resetTrigger() {
         isEnabled = true;
-    }
-
-    @Override
-    public String getDescription() {
-        return "Indicates when a player has gone out of bounds.";
-    }
-
-    @Override
-    public String getName() {
-        return "Boundary";
     }
 }

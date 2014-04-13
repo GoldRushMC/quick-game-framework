@@ -3,7 +3,6 @@ package framework.manager;
 import framework.arena.Arenable;
 import framework.game.Gameable;
 import framework.game.Participatable;
-import framework.save.Saveable;
 import framework.voting.Voteable;
 import org.bukkit.scoreboard.Scoreboard;
 
@@ -51,8 +50,4 @@ public interface Managable {
      * @return The {@link List} of {@link Scoreboard}s
      */
     List<Scoreboard> getScoreboards();
-
-    boolean save(Saveable toSave);
-
-    boolean load(Saveable toLoad);
 }
