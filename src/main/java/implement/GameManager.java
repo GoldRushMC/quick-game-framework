@@ -5,7 +5,6 @@ import framework.game.Gameable;
 import framework.game.Participatable;
 import framework.general.Enums;
 import framework.manager.Managable;
-import framework.save.Saveable;
 import framework.voting.Voteable;
 import org.bukkit.scoreboard.Scoreboard;
 
@@ -13,12 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Lex on 11/04/2014.
+ * This class implements the Managable interface. It contains both the games and arenas, and maintains
+ * all the games on a given server.
  */
-public class GameManager implements Managable{
+public class GameManager implements Managable {
 
     List<Arenable> arenas = new ArrayList<Arenable>();
-
+    List<Gameable> games = new ArrayList<>();
 
     @Override
     public List<Arenable> getArenas() {
@@ -38,11 +38,7 @@ public class GameManager implements Managable{
     @Override
     public List<Gameable> getFullGameList()
     {
-        List<Gameable> currentGames = new ArrayList<Gameable>();
-        for(Arenable arena : arenas){
-                currentGames.add(arena.getCurrentGame());
-        }
-        return currentGames;
+        return games;
     }
 
     @Override
@@ -66,15 +62,5 @@ public class GameManager implements Managable{
             scoreboards.add(arena.getCurrentGame().getScoreboard());
         }
         return scoreboards;
-    }
-
-    @Override
-    public boolean save(Saveable toSave) {
-        return false;
-    }
-
-    @Override
-    public boolean load(Saveable toLoad) {
-        return false;
     }
 }

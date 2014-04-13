@@ -27,7 +27,34 @@
             <id>sk89q-repo</id>
             <url>http://maven.sk89q.com/repo/</url>
         </repository>
+
+        <repository>
+            <id>scala</id>
+            <name>Scala Tools</name>
+            <url>http://scala-tools.org/repo-releases/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+
     </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>scala</id>
+            <name>Scala Tools</name>
+            <url>http://scala-tools.org/repo-releases/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
     <dependencies>
         <dependency>
@@ -52,6 +79,11 @@
             <groupId>org.xerial</groupId>
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.7.15-M1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>LATEST</version>
         </dependency>
     </dependencies>
 

@@ -3,6 +3,7 @@ package framework.game;
 import com.google.common.base.Stopwatch;
 import framework.general.Enums;
 import framework.save.Saveable;
+import framework.team.Teamable;
 import org.bukkit.scoreboard.Scoreboard;
 
 import java.util.List;
@@ -29,6 +30,15 @@ public interface Gameable extends Saveable {
      * @return The list of {@link Participatable}s
      */
     List<Participatable> getParticipants();
+
+    /**
+     * The list of teams involved in this game.
+     * <br/>
+     * If this is a One-on-One or Free-For-All game type,
+     * The team returned is every {@link Participatable} in the game
+     * @return The list of {@link Teamable}s
+     */
+    List<Teamable> getTeams();
 
     /**
      * Gets the {@link org.bukkit.scoreboard.Scoreboard} of the game.
