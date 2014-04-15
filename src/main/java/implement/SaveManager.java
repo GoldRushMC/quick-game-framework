@@ -1,8 +1,15 @@
 package implement;
 
+import com.goldrushmc.Main;
+import framework.arena.Blueprintable;
 import framework.save.SerialDatum;
-import inspire.Datum;
+import implement.arena.AbstractBlueprint;
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.material.MaterialData;
+import org.bukkit.util.Vector;
 
+import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -105,5 +112,68 @@ public class SaveManager {
             System.err.println( ex.getClass().getName() + ": " + ex.getMessage() );
             return null;
         }
+    }
+
+    public Boolean saveBlueprint(Blueprintable blueprint){
+        File file = new File(Main.instance.getDataFolder(), blueprint.getName()+".blu");
+
+        try{
+            if(!file.exists())
+                file.createNewFile();
+
+            FileWriter fileWriter = new FileWriter(file, true);
+
+            for(Vector vector : blueprint.getRelativeLayout().keySet()){
+                String line = vector.getX() + "," + vector.getBlockY() + "," + vector.getZ() + "|";
+                line = line + blueprint.getRelativeLayout().get(vector).getType().name() + "|";
+                line = line + blueprint.getRelativeLayout().get(vector).getDurability();
+
+                fileWriter.append(line + "\n");
+            }
+            return true;
+        } catch (Exception ex){
+            System.err.println( ex.getClass().getName() + ": " + ex.getMessage() );
+            return false;
+        }
+    }
+
+    public List<Blueprintable> loadAllBlueprints(){
+        List<Blueprintable> blueprints = new ArrayList<Blueprintable>();
+
+        for(File file : finder(Main.instance.getDataFolder().getAbsolutePath())){
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(file));
+
+                String line = br.readLine();
+
+                Map<Vector, ItemStack> map = new HashMap<Vector, ItemStack>();
+
+                while ( line != null ) {
+                    String[] splitArray = line.split("|");
+                    String[] vectorSplitArray = splitArray[0].split(",");
+                    Vector vector = new Vector(Double.valueOf(vectorSplitArray[0]), Double.valueOf(vectorSplitArray[1]), Double.valueOf(vectorSplitArray[2]));
+                    ItemStack stack = new ItemStack(Material.getMaterial(splitArray[1]), Integer.valueOf(splitArray[2]));
+                    map.put(vector, stack);
+                    line = br.readLine();
+                }
+
+                AbstractBlueprint blueprint = new AbstractBlueprint(map);
+
+            } catch(Exception ex){
+                System.err.println( ex.getClass().getName() + ": " + ex.getMessage() );
+                return null;
+            }
+        }
+        return null;
+    }
+
+    public File[] finder( String dirName){
+        File dir = new File(dirName);
+
+        return dir.listFiles(new FilenameFilter() {
+            public boolean accept(File dir, String filename)
+            { return filename.endsWith(".blu"); }
+        } );
+
     }
 }
