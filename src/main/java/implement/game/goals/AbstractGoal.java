@@ -1,6 +1,7 @@
 package implement.game.goals;
 
 import framework.game.Gameable;
+import framework.game.Playable;
 import framework.game.Goalable;
 import framework.team.Teamable;
 import implement.game.rules.AbstractRule;
@@ -21,9 +22,9 @@ public abstract class AbstractGoal extends AbstractRule implements Goalable {
     protected DisplaySlot displaySlot;
     protected List<Teamable> teams;
 
-    public AbstractGoal(String name, String description, Gameable game, Scoreboard scoreboard) {
-        super(name, description, game);
-        teams = game.getTeams();
+    public AbstractGoal(String name, String description, Playable game, Scoreboard scoreboard) {
+        super(name, description, game.getGame());
+        this.teams = game.getTeams();
         this.scoreboard = scoreboard;
         scoreboard.registerNewObjective(getName(), getCriteria());
     }

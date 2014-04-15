@@ -1,7 +1,7 @@
 package implement;
 
 import framework.arena.Arenable;
-import framework.game.Gameable;
+import framework.game.Playable;
 import framework.game.Participatable;
 import framework.general.Enums;
 import framework.manager.Managable;
@@ -18,7 +18,7 @@ import java.util.List;
 public class GameManager implements Managable {
 
     List<Arenable> arenas = new ArrayList<Arenable>();
-    List<Gameable> games = new ArrayList<>();
+    List<Playable> games = new ArrayList<>();
 
     @Override
     public List<Arenable> getArenas() {
@@ -26,8 +26,8 @@ public class GameManager implements Managable {
     }
 
     @Override
-    public List<Gameable> getCurrentGames() {
-        List<Gameable> currentGames = new ArrayList<Gameable>();
+    public List<Playable> getCurrentGames() {
+        List<Playable> currentGames = new ArrayList<Playable>();
         for(Arenable arena : arenas){
             if(arena.getCurrentGame().getStatus().equals(Enums.GameStatus.STARTED))
                 currentGames.add(arena.getCurrentGame());
@@ -36,7 +36,7 @@ public class GameManager implements Managable {
     }
 
     @Override
-    public List<Gameable> getFullGameList()
+    public List<Playable> getFullGameList()
     {
         return games;
     }
