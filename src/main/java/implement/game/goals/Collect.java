@@ -1,6 +1,6 @@
 package implement.game.goals;
 
-import framework.game.Gameable;
+import framework.game.Playable;
 import framework.game.Participatable;
 import framework.team.Teamable;
 import org.bukkit.Material;
@@ -21,7 +21,7 @@ public class Collect extends AbstractGoal {
     protected final int amountToCollect;
     protected Map<Teamable, List<ItemStack>> teamToItemsCollectedMap = new HashMap<>();
 
-    public Collect(Material toCollect, int amountToCollect, Gameable game, Scoreboard scoreboard) {
+    public Collect(Material toCollect, int amountToCollect, Playable game, Scoreboard scoreboard) {
         super("Collect", "Players must collect a certain amount of " + toCollect.name(), game, scoreboard);
         this.toCollect = toCollect;
         this.amountToCollect = amountToCollect;

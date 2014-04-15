@@ -1,9 +1,6 @@
 package implement.game.rules;
 
-import framework.game.Actionable;
-import framework.game.Gameable;
-import framework.game.Ruleable;
-import framework.game.Triggerable;
+import framework.game.*;
 import implement.general.AbstractInformable;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;

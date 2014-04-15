@@ -9,7 +9,7 @@ import java.util.List;
  * The Saveable interface provides a way to generically save any object. This interface defines
  * The different requirements for an object to be able to be saved.
  */
-public interface Saveable extends Informable{
+public interface Saveable extends Informable {
 
     /**
      * Caches the present state of the {@link Saveable}.

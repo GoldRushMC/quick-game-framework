@@ -1,7 +1,7 @@
 package framework.manager;
 
 import framework.arena.Arenable;
-import framework.game.Gameable;
+import framework.game.Playable;
 import framework.game.Participatable;
 import framework.voting.Voteable;
 import org.bukkit.scoreboard.Scoreboard;
@@ -22,16 +22,16 @@ public interface Managable {
     List<Arenable> getArenas();
 
     /**
-     * Gets a list of {@link Gameable}s that are currently being played
-     * @return The {@link List} of {@link Gameable}s
+     * Gets a list of {@link framework.game.Playable}s that are currently being played
+     * @return The {@link List} of {@link framework.game.Playable}s
      */
-    List<Gameable> getCurrentGames();
+    List<Playable> getCurrentGames();
 
     /**
-     * Gets a list of all the {@link Gameable}s available on the server.
-     * @return The {@link List} of {@link Gameable}s
+     * Gets a list of all the {@link framework.game.Playable}s available on the server.
+     * @return The {@link List} of {@link framework.game.Playable}s
      */
-    List<Gameable> getFullGameList();
+    List<Playable> getFullGameList();
 
     /**
      * Gets a list of {@link Participatable}s.

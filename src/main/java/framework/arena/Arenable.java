@@ -1,6 +1,6 @@
 package framework.arena;
 
-import framework.game.Gameable;
+import framework.game.Playable;
 import framework.save.Saveable;
 
 import java.util.List;
@@ -11,20 +11,20 @@ import java.util.List;
 public interface Arenable extends Saveable {
 
     /**
-     * Gets the types of {@link framework.game.Gameable}s supported by this arena.
+     * Gets the types of {@link framework.game.Playable}s supported by this arena.
      * @return A list of strings that represent the names of supported game types.
      */
     List<String> getSupportedGameTypes();
 
     /**
-     * Gets the in-game {@link Gameable} interfaces that are supported.
+     * Gets the in-game {@link framework.game.Playable} interfaces that are supported.
      * By this environment.
      *
      * Use Case: The Voting Booth.
      *
-     * @return The {@link List} of {@link Gameable} objects
+     * @return The {@link List} of {@link framework.game.Playable} objects
      */
-    List<Gameable> getSupportedGames();
+    List<Playable> getSupportedGames();
 
     /**
      * Gets the different possible environment types of this arena
@@ -50,9 +50,9 @@ public interface Arenable extends Saveable {
 
     /**
      * Gets the current game being played.
-     * @return The {@link Gameable} object
+     * @return The {@link framework.game.Playable} object
      */
-    Gameable getCurrentGame();
+    Playable getCurrentGame();
 
     /**
      * Gets the {@link Blueprintable} that defines the layout of the arena

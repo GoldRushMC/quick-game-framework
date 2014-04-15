@@ -1,5 +1,6 @@
 package implement.team;
 
+import framework.game.Gameable;
 import framework.game.Participatable;
 import framework.team.Teamable;
 import implement.general.AbstractInformable;
