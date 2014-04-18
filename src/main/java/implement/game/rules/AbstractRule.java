@@ -24,20 +24,44 @@ public abstract class AbstractRule extends AbstractInformable implements Ruleabl
     private Map<String, List<Triggerable<? extends Event>>> triggerToEventMap = new ConcurrentHashMap<>();
     protected List<Triggerable<?>> triggers = new ArrayList<>();
     protected List<Actionable> actions = new ArrayList<>();
+    protected Map<String, List<Actionable>> triggerToActionMap = new ConcurrentHashMap<>();
 
     public AbstractRule(String name, String description, Gameable game) {
         super(name, description);
         this.game = game;
+        mapTriggersToEvents();
     }
 
+    /**
+     *
+     * @param event The catch-all for all events.
+     */
     @SuppressWarnings("unchecked")
     @EventHandler(priority = EventPriority.MONITOR)
     public void Listen(Event event) {
+
+        //Get event name
         String evtName = event.getClass().getName();
+
+        //If the event has any triggers, match the conditions
         if (triggerToEventMap.containsKey(evtName)) {
             List<Triggerable<? extends Event>> trigs = triggerToEventMap.get(evtName);
             for(Triggerable t : trigs) {
-                t.matchCondition(event);
+
+                //check to see if any triggers have the conditions matched
+                if(t.matchCondition(event)) {
+
+                    //If so, get the actions mapped to this trigger
+                    if (triggerToActionMap.containsKey(t.getName())) {
+                        for (Actionable a : triggerToActionMap.get(t.getName())) {
+
+                            //Check to see if the action is enabled, then execute it
+                            if (a.isEnabled()) {
+                                a.performAction();
+                            }
+                        }
+                    }
+                }
             }
         }
     }

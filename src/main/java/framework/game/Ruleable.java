@@ -1,6 +1,7 @@
 package framework.game;
 
 import framework.general.Informable;
+import org.bukkit.event.Listener;
 
 import java.util.List;
 
@@ -8,7 +9,7 @@ import java.util.List;
  * Ruleable is the contract for how the rules with games are expected to behave.
  *
  */
-public interface Ruleable extends Informable {
+public interface Ruleable extends Informable, Listener {
     /**
      * Gets the list of {@link Actionable}s that are caused by this rule
      *
@@ -21,5 +22,4 @@ public interface Ruleable extends Informable {
      * @return The list of {@link Triggerable}s
      */
     List<Triggerable<?>> getTriggers();
-
 }

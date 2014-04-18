@@ -50,4 +50,9 @@ public interface Managable {
      * @return The {@link List} of {@link Scoreboard}s
      */
     List<Scoreboard> getScoreboards();
+
+    /**
+     * Stops all current games
+     */
+    void stopAllGames();
 }
