@@ -1,7 +1,8 @@
 package com.goldrushmc;
 
-import implement.GameManager;
-import implement.SaveManager;
+import framework.manager.Managable;
+import implement.game.manage.GameManager;
+import implement.game.manage.SaveManager;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -16,16 +17,13 @@ import java.io.IOException;
 public class Main extends JavaPlugin {
 
     public static Main instance;
-    private final String saveFileName;
     private Configuration config;
-    private GameManager gm;
+    private Managable gm;
     private SaveManager sm;
 
-    public Main() {
-        saveFileName = "saved_games";
-    }
-
     public void onEnable(){
+        final String saveFileName = "saved_games";
+
         instance = this;
 
         File folder = getDataFolder();
@@ -45,16 +43,11 @@ public class Main extends JavaPlugin {
 
         FileConfiguration fc = getConfig();
 
-
-        GameManager gm = new GameManager();
-        SaveManager sm = new SaveManager(saveFile.toURI().getPath());
+        gm = new GameManager(this);
+        sm = new SaveManager(saveFile.getPath());
     }
 
     public void onDisable(){
-
-    }
-
-    private void getAllExistingGames() {
-
+        gm.stopAllGames();
     }
 }

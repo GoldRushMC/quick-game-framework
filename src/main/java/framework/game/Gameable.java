@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * The Gameable interface defines what makes up a game
  */
-public interface Gameable extends Informable{
+public interface Gameable extends Informable {
 
     /**
      * The list of rules to be followed.
