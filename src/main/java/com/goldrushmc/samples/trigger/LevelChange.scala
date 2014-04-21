@@ -1,7 +1,8 @@
-package implement.game.triggers
+package com.goldrushmc.samples.trigger
 
 import org.bukkit.event.player.PlayerLevelChangeEvent
 import framework.game.Ruleable
+import implement.game.triggers.AbstractTrigger
 
 /**
  * User: InspiredIdealist

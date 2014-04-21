@@ -2,7 +2,9 @@ package implement.game;
 
 import com.google.common.base.Stopwatch;
 import framework.arena.Arenable;
-import framework.game.*;
+import framework.game.Gameable;
+import framework.game.Participatable;
+import framework.game.Playable;
 import framework.general.Enums;
 import framework.team.Teamable;
 import implement.team.DefaultTeam;
@@ -38,7 +40,7 @@ public class GameContainer implements Playable {
     }
 
 
-    protected GameContainer(Arenable arena, Gameable game, Scoreboard scoreboard, List<Participatable> participants, int timeLimit) {
+    public GameContainer(Arenable arena, Gameable game, Scoreboard scoreboard, List<Participatable> participants, int timeLimit) {
         this(arena, game, scoreboard, timeLimit);
         this.participants = participants;
         Team t = scoreboard.registerNewTeam("Players");
@@ -48,7 +50,7 @@ public class GameContainer implements Playable {
         teams.add(new DefaultTeam("Player List", "List of Players", t, participants));
     }
 
-    protected GameContainer(Arenable arena, List<Teamable> teams, Gameable game, Scoreboard scoreboard, int timeLimit) {
+    public GameContainer(Arenable arena, List<Teamable> teams, Gameable game, Scoreboard scoreboard, int timeLimit) {
         this(arena, game, scoreboard, timeLimit);
         this.teams = teams;
         for(Teamable team : teams) {

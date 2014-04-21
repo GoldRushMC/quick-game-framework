@@ -1,5 +1,6 @@
 package framework.arena;
 
+import framework.game.Gameable;
 import framework.game.Playable;
 import framework.save.Saveable;
 
@@ -24,7 +25,7 @@ public interface Arenable extends Saveable {
      *
      * @return The {@link List} of {@link framework.game.Playable} objects
      */
-    List<Playable> getSupportedGames();
+    List<Gameable> getSupportedGames();
 
     /**
      * Gets the different possible environment types of this arena
@@ -47,6 +48,16 @@ public interface Arenable extends Saveable {
      * @return {@code true} if the environment changed sucessfully, {@code false} if not.
      */
     boolean changeEnvironment(Environmentable environment);
+
+    /**
+     * Attempts to change the current environment the arena is in.
+     * A reason this may fail is because a game may not be yet finished,
+     * and games have the ability to dictate whether environment changes
+     * are allowed or not.
+     * @param environmentName The name of the {@link Environmentable} to change to. This is retrieved from the getEnvironments() list.
+     * @return {@code true} if the environment changed sucessfully, {@code false} if not.
+     */
+    boolean changeEnvironment(String environmentName);
 
     /**
      * Gets the current game being played.

@@ -26,4 +26,16 @@ public interface Gameable extends Informable {
      * @return {@code true} if it is allowed, {@code false} if not.
      */
     boolean allowEnvironmentUpdates();
+
+    /**
+     * Returns the container which this game is running in.
+     * @return The {@link Playable} instance
+     */
+    Playable getContainer();
+
+    /**
+     * Sets a new container for the game.
+     * @param container The {@link Playable} instance that hosts this game
+     */
+    void setContainer(Playable container);
 }

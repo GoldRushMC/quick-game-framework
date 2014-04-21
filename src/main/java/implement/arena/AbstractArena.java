@@ -3,6 +3,7 @@ package implement.arena;
 import framework.arena.Arenable;
 import framework.arena.Blueprintable;
 import framework.arena.Environmentable;
+import framework.game.Gameable;
 import framework.game.Playable;
 import implement.general.AbstractInformable;
 import inspire.Datum;
@@ -16,7 +17,7 @@ import java.util.List;
 public abstract class AbstractArena extends AbstractInformable implements Arenable {
 
     protected Blueprintable blueprint;
-    protected List<Playable> supportedGames;
+    protected List<Gameable> supportedGames;
     protected List<Environmentable> environmentList;
     protected Playable currentGame;
     protected Environmentable currentEnvironment;
@@ -29,14 +30,14 @@ public abstract class AbstractArena extends AbstractInformable implements Arenab
     @Override
     public List<String> getSupportedGameTypes() {
         List<String> gameList = new ArrayList<>();
-        for(Playable g : supportedGames) {
+        for(Gameable g : supportedGames) {
             gameList.add(g.getName());
         }
         return gameList;
     }
 
     @Override
-    public List<Playable> getSupportedGames() {
+    public List<Gameable> getSupportedGames() {
         return supportedGames;
     }
 
@@ -48,6 +49,16 @@ public abstract class AbstractArena extends AbstractInformable implements Arenab
     @Override
     public Environmentable getCurrentEnvironment() {
         return currentEnvironment;
+    }
+
+    @Override
+    public boolean changeEnvironment(String environmentName) {
+        for(Environmentable e : environmentList) {
+            if(e.getName().equals(environmentName)) {
+                return changeEnvironment(e);
+            }
+        }
+        return false;
     }
 
     @Override
