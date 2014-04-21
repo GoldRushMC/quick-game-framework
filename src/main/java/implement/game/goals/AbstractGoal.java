@@ -1,7 +1,6 @@
 package implement.game.goals;
 
 import framework.game.Gameable;
-import framework.game.Playable;
 import framework.game.Goalable;
 import framework.team.Teamable;
 import implement.game.rules.AbstractRule;
@@ -10,23 +9,28 @@ import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A Base implementation of the {@link Goalable} interface. This abstracts away some of the base functionality that
  * will be needed across all Goals, and also gets rid of some boilerplate code too.
  */
-public abstract class AbstractGoal extends AbstractRule implements Goalable {
+public abstract class AbstractGoal<T> extends AbstractRule implements Goalable<T> {
 
+    protected T tracker;
     protected Scoreboard scoreboard;
     protected DisplaySlot displaySlot;
-    protected List<Teamable> teams;
+    protected Map<Teamable, T> teamToProgressMap = new HashMap<>();
 
-    public AbstractGoal(String name, String description, Playable game, Scoreboard scoreboard) {
-        super(name, description, game.getGame());
-        this.teams = game.getTeams();
+    public AbstractGoal(String name, String description, Gameable game, Scoreboard scoreboard, T defaultTrackerInstance) {
+        super(name, description, game);
         this.scoreboard = scoreboard;
         scoreboard.registerNewObjective(getName(), getCriteria());
+        for(Teamable t : game.getContainer().getTeams()) {
+            teamToProgressMap.put(t, defaultTrackerInstance);
+        }
+        tracker = defaultTrackerInstance;
     }
 
     @Override
@@ -68,5 +72,10 @@ public abstract class AbstractGoal extends AbstractRule implements Goalable {
         }
         //Throw an error if the player is not found.
         throw new NullPointerException(String.format("There is no score for player '%s' ", offlinePlayer.getName()));
+    }
+
+    @Override
+    public T getProgressTrackerType() {
+        return tracker;
     }
 }

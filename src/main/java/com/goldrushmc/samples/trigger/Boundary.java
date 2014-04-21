@@ -1,7 +1,8 @@
-package implement.game.triggers;
+package com.goldrushmc.samples.trigger;
 
 import framework.arena.Blueprintable;
 import framework.game.Ruleable;
+import implement.game.triggers.AbstractTrigger;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 /**

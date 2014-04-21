@@ -6,7 +6,13 @@ import org.bukkit.scoreboard.Objective;
  * This interface makes the {@link Objective} interface play a more important role in games,
  * as opposed to being a passive string.
  */
-public interface Goalable extends Objective, Ruleable {
+public interface Goalable<T> extends Objective, Ruleable {
+
+    /**
+     * The type that is used to track the progress of goals.
+     * @return The tracker type
+     */
+    T getProgressTrackerType();
 
     /**
      * Gets the raw progress {@code int}

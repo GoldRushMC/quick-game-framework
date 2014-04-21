@@ -4,7 +4,6 @@ import framework.game.Participatable;
 import org.bukkit.scoreboard.Team;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * User: InspiredIdealist

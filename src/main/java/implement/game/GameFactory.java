@@ -3,10 +3,8 @@ package implement.game;
 import framework.arena.Arenable;
 import framework.game.*;
 import framework.team.Teamable;
-import implement.team.AbstractTeam;
 import implement.team.DefaultTeam;
 import org.bukkit.scoreboard.Scoreboard;
-import org.bukkit.scoreboard.Team;
 
 import java.util.ArrayList;
 import java.util.List;

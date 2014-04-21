@@ -2,8 +2,8 @@ package implement.game.manage;
 
 import framework.arena.Arenable;
 import framework.game.Gameable;
-import framework.game.Playable;
 import framework.game.Participatable;
+import framework.game.Playable;
 import framework.game.Ruleable;
 import framework.general.Enums;
 import framework.manager.Managable;
@@ -34,6 +34,7 @@ public class GameManager implements Managable {
         instance = this;
     }
 
+    @Override
     public boolean registerGame(Gameable game) {
         //Gather all listeners for the game
         List<Ruleable> listeners = game.getRules();
@@ -45,10 +46,12 @@ public class GameManager implements Managable {
         return gameTypes.add(game);
     }
 
+    @Override
     public boolean registerArena(Arenable arena) {
         return arenas.add(arena);
     }
 
+    @Override
     public boolean unregisterArena(String arenaName) {
         Iterator<Arenable> arena = arenas.iterator();
         int count = arenas.size();
@@ -60,6 +63,20 @@ public class GameManager implements Managable {
             }
         }
         return arenas.size() < count;
+    }
+
+    @Override
+    public boolean unregisterGame(String gameTypeName) {
+        Iterator<Gameable> games = gameTypes.iterator();
+        int count = gameTypes.size();
+        while(games.hasNext()) {
+            Gameable g = games.next();
+            if(g.getName().equals(gameTypeName)) {
+                gameTypes.remove(g);
+                break;
+            }
+        }
+        return gameTypes.size() < count;
     }
 
     @Override
