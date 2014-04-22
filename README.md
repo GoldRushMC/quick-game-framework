@@ -10,6 +10,7 @@ A Framework dedicated to helping create mini-games in the game Minecraft.
   <li><h4>Game</h4>
     <ul>
       <li>Gameable</li>
+      <li>Playable</li>
       <li>Participatable</li>
       <li>Ruleable</li>
       <li>Goalable</li>

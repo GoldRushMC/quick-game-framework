@@ -12,7 +12,7 @@ public interface Actionable extends Informable {
     /**
      * Invokes the action tied to the instance.
      */
-    void performAction();
+    void performAction(Object... args);
 
     /**
      * Checks to see if the action is enabled or not.
@@ -25,4 +25,10 @@ public interface Actionable extends Informable {
      * @param setTo the state to choose. Enabled = true, Disabled = false
      */
     void setState(boolean setTo);
+
+    /**
+     * Returns the {@link Ruleable} this Action is associated to.
+     * @return the {@link Ruleable} instance
+     */
+    Ruleable getRule();
 }

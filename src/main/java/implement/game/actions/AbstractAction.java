@@ -1,6 +1,7 @@
 package implement.game.actions;
 
 import framework.game.Actionable;
+import framework.game.Ruleable;
 import implement.general.AbstractInformable;
 
 /**
@@ -9,10 +10,12 @@ import implement.general.AbstractInformable;
  */
 public abstract class AbstractAction extends AbstractInformable implements Actionable{
 
-    boolean enabled = true;
+    protected boolean enabled = true;
+    protected Ruleable rule;
 
-    protected AbstractAction(String name, String description) {
+    protected AbstractAction(String name, String description, Ruleable rule) {
         super(name, description);
+        this.rule = rule;
     }
 
     @Override
@@ -23,5 +26,10 @@ public abstract class AbstractAction extends AbstractInformable implements Actio
     @Override
     public void setState(boolean setTo) {
         enabled = setTo;
+    }
+
+    @Override
+    public Ruleable getRule() {
+        return rule;
     }
 }

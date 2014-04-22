@@ -3,6 +3,7 @@ package framework.manager;
 import framework.arena.Arenable;
 import framework.game.Gameable;
 import framework.game.Participatable;
+import framework.game.Playable;
 import framework.voting.Voteable;
 import org.bukkit.scoreboard.Scoreboard;
 
@@ -22,16 +23,16 @@ public interface Managable {
     List<Arenable> getArenas();
 
     /**
-     * Gets a list of {@link Gameable}s that are currently being played
-     * @return The {@link List} of {@link Gameable}s
+     * Gets a list of {@link framework.game.Playable}s that are currently being played
+     * @return The {@link List} of {@link framework.game.Playable}s
      */
-    List<Gameable> getCurrentGames();
+    List<Playable> getCurrentGames();
 
     /**
-     * Gets a list of all the {@link Gameable}s available on the server.
-     * @return The {@link List} of {@link Gameable}s
+     * Gets a list of all the {@link framework.game.Playable}s available on the server.
+     * @return The {@link List} of {@link framework.game.Playable}s
      */
-    List<Gameable> getFullGameList();
+    List<Playable> getFullGameList();
 
     /**
      * Gets a list of {@link Participatable}s.
@@ -50,4 +51,41 @@ public interface Managable {
      * @return The {@link List} of {@link Scoreboard}s
      */
     List<Scoreboard> getScoreboards();
+
+    /**
+     * Stops all current games
+     */
+    void stopAllGames();
+
+    /**
+     * Registers a game type to the framework
+     *
+     * @param game The game type to register
+     * @return {@code true} if it is added, {@code false} if not.
+     */
+    boolean registerGame(Gameable game);
+
+    /**
+     * Registers an arena to the framework
+     *
+     * @param arena The arena to register
+     * @return {@code true} if it is added, {@code false} if not.
+     */
+    boolean registerArena(Arenable arena);
+
+    /**
+     * Unregisters an arena from the framework
+     *
+     * @param arenaName The arena to unregister
+     * @return {@code true} if it is removed, {@code false} if not.
+     */
+    boolean unregisterArena(String arenaName);
+
+    /**
+     * Unregisters a game type from the framework
+     *
+     * @param gameTypeName The game type to unregister
+     * @return {@code true} if it is removed, {@code false} if not.
+     */
+    boolean unregisterGame(String gameTypeName);
 }

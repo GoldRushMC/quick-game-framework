@@ -19,7 +19,7 @@ public abstract class AbstractTeam extends AbstractInformable implements Teamabl
     int teamSizeLimit;
 
     protected AbstractTeam(String name, String description, Team teamLink, List<Participatable> members) {
-        super(name, description);
+        super(description, name);
         this.teamLink = teamLink;
         this.members = members;
     }

@@ -4,6 +4,7 @@ import framework.arena.Arenable;
 import framework.arena.Blueprintable;
 import framework.arena.Environmentable;
 import framework.game.Gameable;
+import framework.game.Playable;
 import implement.general.AbstractInformable;
 import inspire.Datum;
 
@@ -18,7 +19,7 @@ public abstract class AbstractArena extends AbstractInformable implements Arenab
     protected Blueprintable blueprint;
     protected List<Gameable> supportedGames;
     protected List<Environmentable> environmentList;
-    protected Gameable currentGame;
+    protected Playable currentGame;
     protected Environmentable currentEnvironment;
     protected List<Datum<?>> data;
 
@@ -51,7 +52,17 @@ public abstract class AbstractArena extends AbstractInformable implements Arenab
     }
 
     @Override
-    public Gameable getCurrentGame() {
+    public boolean changeEnvironment(String environmentName) {
+        for(Environmentable e : environmentList) {
+            if(e.getName().equals(environmentName)) {
+                return changeEnvironment(e);
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public Playable getCurrentGame() {
         return currentGame;
     }
 

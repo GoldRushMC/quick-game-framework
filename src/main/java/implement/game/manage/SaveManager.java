@@ -1,4 +1,4 @@
-package implement;
+package implement.game.manage;
 
 import com.goldrushmc.Main;
 import framework.arena.Blueprintable;
