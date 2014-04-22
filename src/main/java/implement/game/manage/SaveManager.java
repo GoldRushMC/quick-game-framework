@@ -114,6 +114,11 @@ public class SaveManager {
         }
     }
 
+    /**
+     * Allows for saving of blueprints to server data directory, blueprints will save as their name with the file extension .blu
+     * @param blueprint {@link framework.arena.Blueprintable} to save
+     * @return True if save successful, False if an error occurred.
+     */
     public Boolean saveBlueprint(Blueprintable blueprint){
         File file = new File(Main.instance.getDataFolder(), blueprint.getName()+".blu");
 
@@ -137,8 +142,12 @@ public class SaveManager {
         }
     }
 
-    public List<Blueprintable> loadAllBlueprints(){
-        List<Blueprintable> blueprints = new ArrayList<Blueprintable>();
+    /**
+     * loads all blueprints from the plugin directory into a list of {@link implement.arena.AbstractBlueprint}
+     * @return {@link java.util.ArrayList} of {@link implement.arena.AbstractBlueprint}
+     */
+    public List<AbstractBlueprint> loadAllBlueprints(){
+        List<AbstractBlueprint> blueprints = new ArrayList<AbstractBlueprint>();
 
         for(File file : finder(Main.instance.getDataFolder().getAbsolutePath())){
             try {
@@ -157,17 +166,22 @@ public class SaveManager {
                     line = br.readLine();
                 }
 
-                AbstractBlueprint blueprint = new AbstractBlueprint(map);
+                blueprints.add(new AbstractBlueprint(map));
 
             } catch(Exception ex){
                 System.err.println( ex.getClass().getName() + ": " + ex.getMessage() );
                 return null;
             }
         }
-        return null;
+        return blueprints;
     }
 
-    public File[] finder( String dirName){
+    /**
+     * Finds a list of all .blu files in a given directory
+     * @param dirName {@link java.lang.String} directory name
+     * @return list of {@link java.io.File} in the given directory
+     */
+    public File[] finder(String dirName){
         File dir = new File(dirName);
 
         return dir.listFiles(new FilenameFilter() {
