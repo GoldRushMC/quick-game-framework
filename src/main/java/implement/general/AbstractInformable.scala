@@ -7,6 +7,6 @@ import framework.general.Informable
  */
 abstract class AbstractInformable(name: String, val description: String) extends Informable {
 
-  override def getDescription: String = description
-  override def getName: String = if(name == null) getClass.getName else name
+  override val getDescription: String = description
+  override val getName: String = if(name == null) getClass.getName else name
 }

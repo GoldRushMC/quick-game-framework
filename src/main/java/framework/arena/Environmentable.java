@@ -19,4 +19,11 @@ public interface Environmentable extends Saveable {
      * @return the {@link Blueprintable} object
      */
     Blueprintable getBlueprint();
+
+    /**
+     * Determines whether or not two envrionments can be used interchangeably
+     * @param other The {@link Environmentable} to compare
+     * @return {@code true} if they have the same Vector mapping, {@code false} if not.
+     */
+    boolean isCompatibleWith(Environmentable other);
 }

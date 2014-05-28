@@ -7,9 +7,14 @@ import framework.game.Gameable;
 import framework.game.Playable;
 import implement.general.AbstractInformable;
 import inspire.Datum;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitTask;
+import org.bukkit.util.Vector;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * The Base implementation for Arenas.
@@ -17,23 +22,26 @@ import java.util.List;
 public abstract class AbstractArena extends AbstractInformable implements Arenable {
 
     protected Blueprintable blueprint;
-    protected List<Gameable> supportedGames;
-    protected List<Environmentable> environmentList;
+    protected List<Gameable> supportedGames = new ArrayList<>();
+    private  List<String> supportedGameNames = new ArrayList<>();
+    protected List<Environmentable> environmentList = new ArrayList<>();
     protected Playable currentGame;
     protected Environmentable currentEnvironment;
-    protected List<Datum<?>> data;
+    protected List<Datum<?>> data = new ArrayList<>();
+    protected final JavaPlugin plugin;
 
-    protected AbstractArena(String name, String description) {
+    protected AbstractArena(String name, String description, JavaPlugin plugin) {
         super(name, description);
+        this.plugin = plugin;
+    }
+
+    protected AbstractArena(String description, JavaPlugin plugin) {
+        this(null, description, plugin);
     }
 
     @Override
     public List<String> getSupportedGameTypes() {
-        List<String> gameList = new ArrayList<>();
-        for(Gameable g : supportedGames) {
-            gameList.add(g.getName());
-        }
-        return gameList;
+        return supportedGameNames;
     }
 
     @Override
@@ -56,6 +64,19 @@ public abstract class AbstractArena extends AbstractInformable implements Arenab
         for(Environmentable e : environmentList) {
             if(e.getName().equals(environmentName)) {
                 return changeEnvironment(e);
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean changeEnvironment(Environmentable environment) {
+        if(currentGame.getGame().allowEnvironmentUpdates()) {
+            //Make sure it is a compatible environment, i.e. It has the same layout, just different blocks
+            if(environmentList.contains(environment)) {
+                ArenaShift as = new ArenaShift(currentEnvironment, environment);
+                Bukkit.getScheduler().runTask(plugin, as);
+                return true;
             }
         }
         return false;

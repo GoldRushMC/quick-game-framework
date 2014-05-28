@@ -19,7 +19,7 @@ public class Boundary extends AbstractTrigger<PlayerMoveEvent> {
 
     @Override
     public boolean matchCondition(PlayerMoveEvent playerMoveEvent) {
-        if(isEnabled && !bounds.getCurrentLayout().contains(playerMoveEvent.getTo())) {
+        if(isEnabled && !bounds.getCurrentBoundary().contains(playerMoveEvent.getTo())) {
             isEnabled = false;
             return true;
         }

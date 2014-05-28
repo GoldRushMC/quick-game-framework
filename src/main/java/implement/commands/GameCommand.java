@@ -1,5 +1,6 @@
 package implement.commands;
 
+import framework.utility.GameAuth;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -12,12 +13,14 @@ import org.bukkit.permissions.Permission;
  */
 public abstract class GameCommand implements CommandExecutor {
 
+    protected static String DEFAULT_PERMISSION = "DEFAULT";
     protected Permission permissionName;
     protected boolean isPlayerOnly = false;
     protected int requiredArgs = 0;
 
     public GameCommand() {
-
+        GameAuth.getAuthsByCommand(this);
+        permissionName = new Permission(DEFAULT_PERMISSION);
     }
 
     public GameCommand(Permission permissionName) {
@@ -41,7 +44,5 @@ public abstract class GameCommand implements CommandExecutor {
         return (isPlayerOnly && sender instanceof Player) && sender.hasPermission(permissionName) && executeCommand(sender, command, label, args);
     }
 
-    public boolean executeCommand(CommandSender sender, Command command, String label, String[] args) {
-        return false;
-    }
+    public abstract boolean executeCommand(CommandSender sender, Command command, String label, String[] args);
 }

@@ -3,6 +3,7 @@ package implement.arena;
 import framework.arena.Environmentable;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public class ArenaShift implements Runnable {
 
     @Override
     public void run() {
-        Map<Vector, Material> layout = newer.getBlueprint().getRelativeLayout();
+        Map<Vector, ItemStack> layout = newer.getBlueprint().getRelativeLayout();
         List<Location> ref = current.getBlueprint().getCurrentLayout();
 //        long timer = 0;
         for(Location l : ref) {
@@ -44,7 +45,7 @@ public class ArenaShift implements Runnable {
 
             Vector v = l.toVector().normalize();
             if(layout.containsKey(v)) {
-                l.getBlock().setType(layout.get(v));
+                l.getBlock().setType(layout.get(v).getType());
             }
 //            timer++;
         }

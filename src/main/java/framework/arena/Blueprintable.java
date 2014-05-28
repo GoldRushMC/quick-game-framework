@@ -40,4 +40,30 @@ public interface Blueprintable extends Informable{
      */
     int getArea();
 
+    /**
+     * Gets the relative boundary of this blueprint
+     * @return A List of {@link Vector}s that represent the boundary
+     */
+    List<Vector> getRelativeBoundary();
+
+    /**
+     * Gets the current, referential boundary of the blueprint,
+     * Which is represented directly in the {@link org.bukkit.World}
+     * @return A List of {@link Location}s representing the boundary in game
+     */
+    List<Location> getCurrentBoundary();
+
+    /**
+     * Maps the layout in the actual map.
+     *
+     * @param southWest The south-west corner of the blueprint
+     * @param northEast The north-east corner of the blueprint
+     */
+    void createReferentialLayout(Location southWest, Location northEast);
+
+    /**
+     * Maps the layout in the actual map.
+     * @param center The center of the blueprint
+     */
+    void createReferentialLayout(Location center);
 }

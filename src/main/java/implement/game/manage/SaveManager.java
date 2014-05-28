@@ -6,7 +6,6 @@ import framework.save.SerialDatum;
 import implement.arena.AbstractBlueprint;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.material.MaterialData;
 import org.bukkit.util.Vector;
 
 import java.io.*;
@@ -157,7 +156,7 @@ public class SaveManager {
                     line = br.readLine();
                 }
 
-                AbstractBlueprint blueprint = new AbstractBlueprint(map);
+//                Blueprintable blueprint = new AbstractBlueprint();
 
             } catch(Exception ex){
                 System.err.println( ex.getClass().getName() + ": " + ex.getMessage() );
