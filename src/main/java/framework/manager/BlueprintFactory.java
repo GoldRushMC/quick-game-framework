@@ -6,8 +6,6 @@ import implement.arena.AbstractBlueprint;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.material.MaterialData;
 import org.bukkit.util.Vector;
 import scala.Option;
 
@@ -27,7 +25,7 @@ public class BlueprintFactory {
 
         List<Coordinate> coords = new LinkedList<>();
         for(Location l : area) {
-            ItemStack item = l.getBlock().getDrops().iterator().next();
+            Material item = l.getBlock().getType();
             coords.add(new Coordinate(l.toVector(), item));
         }
         return new AbstractBlueprint(name, description, coords, w);

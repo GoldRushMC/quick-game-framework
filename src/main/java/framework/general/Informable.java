@@ -18,4 +18,8 @@ public interface Informable {
      * @return The name
      */
     String getName();
+//
+//    void setName(String name);
+//
+//    void setDescription(String description);
 }

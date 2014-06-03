@@ -1,9 +1,7 @@
 package implement.commands;
 
-import framework.utility.GameAuth;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.permissions.Permission;
 
 /**
  * User: InspiredIdealist

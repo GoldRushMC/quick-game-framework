@@ -1,6 +1,7 @@
 package implement.team;
 
 import framework.game.Participatable;
+import inspire.Datum;
 import org.bukkit.scoreboard.Team;
 
 import java.util.List;
@@ -39,5 +40,15 @@ public class DefaultTeam extends AbstractTeam {
             }
         }
         return mvp;
+    }
+
+    @Override
+    public void capturePresentState() {
+
+    }
+
+    @Override
+    public List<Datum<?>> getData() {
+        return null;
     }
 }

@@ -3,7 +3,6 @@ package framework.utility
 import org.bukkit.permissions.{PermissionDefault, Permission}
 import implement.commands.GameCommand
 import org.bukkit.entity.Player
-import scala.collection.JavaConverters._
 
 /**
  * The game authentication system uses this as a simple in-memory check

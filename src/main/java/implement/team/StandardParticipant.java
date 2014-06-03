@@ -1,6 +1,7 @@
 package implement.team;
 
 import framework.game.Participatable;
+import implement.general.AbstractInformable;
 import implement.general.Stat;
 import inspire.Datum;
 import org.bukkit.OfflinePlayer;
@@ -13,7 +14,7 @@ import java.util.Map;
 /**
  * The Base implementation for the interface {@link Participatable}
  */
-public class StandardParticipant implements Participatable {
+public class StandardParticipant extends AbstractInformable implements Participatable {
 
     protected Map<Stat, Map<String, Integer>> stats = new EnumMap<>(Stat.class);
     protected Player playerLink;
@@ -34,11 +35,6 @@ public class StandardParticipant implements Participatable {
     @Override
     public OfflinePlayer getPlayerLink() {
         return playerLink;
-    }
-
-    @Override
-    public String name() {
-        return playerLink.getName();
     }
 
     @Override
@@ -78,28 +74,13 @@ public class StandardParticipant implements Participatable {
     }
 
     @Override
-    public boolean save(String saveName) {
-        return false;
-    }
-
-    @Override
     public List<Datum<?>> getData() {
         return null;
     }
 
     @Override
-    public boolean load(String saveName) {
-        return false;
-    }
-
-    @Override
-    public boolean loadMostRecentSave() {
-        return false;
-    }
-
-    @Override
     public String getDescription() {
-        return String.format("A player by the name of: %s", name());
+        return String.format("A player by the name of: %s", playerLink.getName());
     }
 
     @Override

@@ -1,9 +1,8 @@
 package implement.game.manage;
 
-import com.goldrushmc.Main;
+import com.goldrushmc.QGCore;
 import framework.arena.Blueprintable;
 import framework.save.SerialDatum;
-import implement.arena.AbstractBlueprint;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
@@ -13,7 +12,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Lex on 11/04/2014.
@@ -114,7 +116,7 @@ public class SaveManager {
     }
 
     public Boolean saveBlueprint(Blueprintable blueprint){
-        File file = new File(Main.instance.getDataFolder(), blueprint.getName()+".blu");
+        File file = new File(QGCore.getInstance().getDataFolder(), blueprint.getName()+".blu");
 
         try{
             if(!file.exists())
@@ -124,8 +126,7 @@ public class SaveManager {
 
             for(Vector vector : blueprint.getRelativeLayout().keySet()){
                 String line = vector.getX() + "," + vector.getBlockY() + "," + vector.getZ() + "|";
-                line = line + blueprint.getRelativeLayout().get(vector).getType().name() + "|";
-                line = line + blueprint.getRelativeLayout().get(vector).getDurability();
+                line = line + blueprint.getRelativeLayout().get(vector).name() + "|";
 
                 fileWriter.append(line + "\n");
             }
@@ -139,7 +140,7 @@ public class SaveManager {
     public List<Blueprintable> loadAllBlueprints(){
         List<Blueprintable> blueprints = new ArrayList<Blueprintable>();
 
-        for(File file : finder(Main.instance.getDataFolder().getAbsolutePath())){
+        for(File file : finder(QGCore.getInstance().getDataFolder().getAbsolutePath())){
             try {
                 BufferedReader br = new BufferedReader(new FileReader(file));
 

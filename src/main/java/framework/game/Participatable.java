@@ -1,5 +1,6 @@
 package framework.game;
 
+import framework.general.Informable;
 import framework.save.Saveable;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -9,20 +10,13 @@ import java.util.Map;
 /**
  * The interface for participants of games.
  */
-public interface Participatable extends Saveable {
+public interface Participatable extends Saveable, Informable {
 
     /**
      * Gets the reference held to the actual Bukkit {@link Player} object.
      * @return The {@link Player} object
      */
     OfflinePlayer getPlayerLink();
-
-    /**
-     * Convenience Method.
-     * Get the name of the player.
-     * @return The normal name of the player, same value as {@link Player}.getName()
-     */
-    String name();
 
     /**
      * Gets the current title of the player. This can vary from game to game.

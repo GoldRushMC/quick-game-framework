@@ -2,10 +2,8 @@ package implement.arena
 
 import framework.arena.Blueprintable
 import framework.utility.Coordinate
-import org.bukkit.Location
-import org.bukkit.World
+import org.bukkit.{Material, Location, World}
 import org.bukkit.util.Vector
-import org.bukkit.inventory.ItemStack
 import implement.general.AbstractInformable
 import scala.collection.JavaConverters._
 import org.bukkit.block.Block
@@ -40,7 +38,7 @@ class AbstractBlueprint(name: String, desc: String, private var point1: Location
 
   override def getCurrentLayout: java.util.List[Location] = if(w.isDefined) generateArea(w.get) else List[Location]().asJava
 
-  private[arena] var relativeLayout: List[Coordinate] = (for(v: Location <- getCurrentLayout.asScala) yield new Coordinate(v.toVector, v.getBlock.getDrops.iterator().next())).toList
+  private[arena] var relativeLayout: List[Coordinate] = (for(v: Location <- getCurrentLayout.asScala) yield new Coordinate(v.toVector, v.getBlock.getType)).toList
 
   /**
    * Gets the Lower and Upper Bounds of the pair given
@@ -60,7 +58,7 @@ class AbstractBlueprint(name: String, desc: String, private var point1: Location
   override def getRelativeLayout = {
     (for {
       v <- relativeLayout
-    } yield (v.v, v.m)).toMap[Vector, ItemStack].asJava
+    } yield (v.v, v.m)).toMap[Vector, Material].asJava
   }
 
   override val getSize = diff(xBound) * diff(yBound) * diff(zBound)
@@ -118,7 +116,7 @@ class AbstractBlueprint(name: String, desc: String, private var point1: Location
       } yield new Tuple2[Vector, Block](v, b)
 
       list.foreach(x => {
-        if(rel.containsKey(x._1)) x._2.setType(rel.get(x._1).getType)
+        if(rel.containsKey(x._1)) x._2.setType(rel.get(x._1))
       })
     }
   }

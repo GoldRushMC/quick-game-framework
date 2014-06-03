@@ -1,7 +1,6 @@
 package framework.team;
 
 import framework.game.Participatable;
-import framework.general.Informable;
 import org.bukkit.scoreboard.Team;
 
 import java.util.List;
@@ -9,7 +8,7 @@ import java.util.List;
 /**
  * The Teamable interface defines how a team is supposed to exist and interact within the framework.
  */
-public interface Teamable extends Informable {
+public interface Teamable extends Participatable {
 
     /**
      * Gets the link between this instance and the {@link Team} in the Bukkit {@link org.bukkit.scoreboard.Scoreboard}.

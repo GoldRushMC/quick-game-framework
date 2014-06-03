@@ -1,12 +1,12 @@
 package framework.arena;
 
-import framework.save.Saveable;
+import framework.general.Informable;
 import org.bukkit.block.Biome;
 
 /**
  * The Environmentable interface represents a particular environment that can be used by Arenas
  */
-public interface Environmentable extends Saveable {
+public interface Environmentable extends Informable {
 
     /**
      * Gets the type of environment this is
