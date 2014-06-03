@@ -1,13 +1,14 @@
 package framework.game;
 
 import framework.general.Informable;
+import skeleton.newbind.layer.Localizable;
 
 /**
  * The Actionable interface defines behavior behind how actions are to be performed
  * within the games.
  *
  */
-public interface Actionable extends Informable {
+public interface Actionable extends Informable, Localizable {
 
     /**
      * Invokes the action tied to the instance.
@@ -26,9 +27,9 @@ public interface Actionable extends Informable {
      */
     void setState(boolean setTo);
 
-    /**
-     * Returns the {@link Ruleable} this Action is associated to.
-     * @return the {@link Ruleable} instance
-     */
-    Ruleable getRule();
+//    /**
+//     * Returns the {@link Ruleable} this Action is associated to.
+//     * @return the {@link Ruleable} instance
+//     */
+//    Ruleable getRule();
 }

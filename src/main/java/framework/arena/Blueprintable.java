@@ -3,9 +3,9 @@ package framework.arena;
 import framework.general.Informable;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -20,13 +20,13 @@ public interface Blueprintable extends Informable{
      * to those relative locations
      * @return The {@link Map} of {@link Vector}s to {@link Material}s
      */
-    Map<Vector, ItemStack> getRelativeLayout();
+    Map<Vector, Material> getRelativeLayout();
 
     /**
      * Gets the area that this blueprint has been applied
      * @return The {@link List} of {@link Location}s
      */
-    List<Location> getCurrentLayout();
+    Collection<Location> getCurrentLayout();
 
     /**
      * Gives the Volume of the Block region this Blueprint takes up.
@@ -40,4 +40,30 @@ public interface Blueprintable extends Informable{
      */
     int getArea();
 
+    /**
+     * Gets the relative boundary of this blueprint
+     * @return A List of {@link Vector}s that represent the boundary
+     */
+    Collection<Vector> getRelativeBoundary();
+
+    /**
+     * Gets the current, referential boundary of the blueprint,
+     * Which is represented directly in the {@link org.bukkit.World}
+     * @return A List of {@link Location}s representing the boundary in game
+     */
+    Collection<Location> getCurrentBoundary();
+
+    /**
+     * Maps the layout in the actual map.
+     *
+     * @param southWest The south-west corner of the blueprint
+     * @param northEast The north-east corner of the blueprint
+     */
+    void createReferentialLayout(Location southWest, Location northEast);
+
+    /**
+     * Maps the layout in the actual map.
+     * @param center The center of the blueprint
+     */
+    void createReferentialLayout(Location center);
 }

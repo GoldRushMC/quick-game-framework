@@ -6,6 +6,7 @@
 
     <groupId>quick-game-framework.goldrushmc.org</groupId>
     <artifactId>goldrushmc.org</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <developers>
         <developer>
@@ -15,6 +16,9 @@
             <name>lexwebb</name>
         </developer>
     </developers>
+    <modules>
+        <module>BindFramework</module>
+    </modules>
     <description>A Framework dedicated to helping create mini-games in the game Minecraft.</description>
 
 
@@ -90,7 +94,7 @@
     <properties>
         <jdk>1.7</jdk>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <main.class>com.goldrushmc.Main</main.class>
+        <main.class>com.goldrushmc.QGCore</main.class>
     </properties>
 
     <build>
@@ -108,8 +112,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>

@@ -1,12 +1,12 @@
 package framework.arena;
 
-import framework.save.Saveable;
+import framework.general.Informable;
 import org.bukkit.block.Biome;
 
 /**
  * The Environmentable interface represents a particular environment that can be used by Arenas
  */
-public interface Environmentable extends Saveable {
+public interface Environmentable extends Informable {
 
     /**
      * Gets the type of environment this is
@@ -19,4 +19,11 @@ public interface Environmentable extends Saveable {
      * @return the {@link Blueprintable} object
      */
     Blueprintable getBlueprint();
+
+    /**
+     * Determines whether or not two envrionments can be used interchangeably
+     * @param other The {@link Environmentable} to compare
+     * @return {@code true} if they have the same Vector mapping, {@code false} if not.
+     */
+    boolean isCompatibleWith(Environmentable other);
 }

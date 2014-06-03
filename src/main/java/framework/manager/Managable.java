@@ -5,6 +5,7 @@ import framework.game.Gameable;
 import framework.game.Participatable;
 import framework.game.Playable;
 import framework.voting.Voteable;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Scoreboard;
 
 import java.util.List;
@@ -63,7 +64,7 @@ public interface Managable {
      * @param game The game type to register
      * @return {@code true} if it is added, {@code false} if not.
      */
-    boolean registerGame(Gameable game);
+    boolean registerGame(Class<? extends Gameable> game);
 
     /**
      * Registers an arena to the framework
@@ -88,4 +89,10 @@ public interface Managable {
      * @return {@code true} if it is removed, {@code false} if not.
      */
     boolean unregisterGame(String gameTypeName);
+
+    /**
+     * Registers the plugin which supports the framework of quick-game
+     * @param plugin The plugin to register
+     */
+    void registerGameFactoryPlugin(JavaPlugin plugin);
 }
